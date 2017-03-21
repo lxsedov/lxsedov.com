@@ -1,0 +1,185 @@
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin vertical-align($position: relative) {
+  position: $position;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+
+$main-color: ;
+
+
+body{
+    font-family: 'Roboto', sans-serif;
+    canvas{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+    .s0{
+        width: 100%;
+        height: 90vh;
+        .main-content{
+            width: 30%;
+            min-width: 300px;
+            text-align: center;
+            margin: auto;
+            color: red;
+            @include vertical-align();
+
+            h1{
+                color: blue;
+                text-transform: uppercase;
+            }
+            p{
+                color: black;
+            }
+            img{
+                border-radius: 50%;
+                width: 150px;
+                height: auto;
+                margin: 20px;
+            }
+            .social{
+                i{
+                  color: blue;
+                  @include transition(color .3s ease);
+                  &:hover{
+                    color: black;
+
+                  }
+                }
+            }
+        }
+    }
+
+    .s2{
+        padding: 20px;
+        height: 100vh;
+        background: red;
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+@-webkit-keyframes ani-mouse {
+	0% {
+	opacity: 1;
+	top: 29%;
+	}
+	15% {
+	opacity: 1;
+	top: 50%;
+	}
+	50% {
+	opacity: 0;
+	top: 50%;
+	}
+	100% {
+	opacity: 0;
+	top: 29%;
+	}
+}
+@-moz-keyframes ani-mouse {
+	0% {
+	opacity: 1;
+	top: 29%;
+	}
+	15% {
+	opacity: 1;
+	top: 50%;
+	}
+	50% {
+	opacity: 0;
+	top: 50%;
+	}
+	100% {
+	opacity: 0;
+	top: 29%;
+	}
+}
+@keyframes ani-mouse {
+	0% {
+	opacity: 1;
+	top: 29%;
+	}
+	15% {
+	opacity: 1;
+	top: 50%;
+	}
+	50% {
+	opacity: 0;
+	top: 50%;
+	}
+	100% {
+	opacity: 0;
+	top: 29%;
+	}
+}
+ .btn-scroll {
+	display: block;
+	position: absolute;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+.btn-scroll > * {
+	display: inline-block;
+  @include transition(alpha .6s ease);
+}
+.btn-scroll > *:hover,
+.btn-scroll > *:focus,
+.btn-scroll > *.active {
+	color: #ffffff;
+}
+.btn-scroll > *:hover,
+.btn-scroll > *:focus,
+.btn-scroll > *:active,
+.btn-scroll > *.active {
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
+.btn-scroll .mouse {
+	position: relative;
+	display: block;
+	width: 30px;
+	height: 50px;
+	margin: 0 auto 20px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	border: 2px solid white;
+	border-radius: 23px;
+}
+.btn-scroll .mouse > * {
+	position: absolute;
+	display: block;
+	top: 29%;
+	left: 50%;
+	width: 6px;
+	height: 6px;
+	margin: -3px 0 0 -3px;
+	background: white;
+	border-radius: 50%;
+	-webkit-animation: ani-mouse 2.5s linear infinite;
+	-moz-animation: ani-mouse 2.5s linear infinite;
+	animation: ani-mouse 2.5s linear infinite;
+}
