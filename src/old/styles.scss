@@ -1,0 +1,217 @@
+* { box-sizing: border-box; }
+
+body { 
+  font-family: sans-serif; 
+  min-width: 400px;
+  overflow: hidden;
+}
+
+canvas{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.w3-left{
+  #svg_4{
+    stroke : red;
+    transform-origin: 50% 50%;
+    animation: spin 1s infinite linear;
+  }
+}
+
+.main-content{
+  height: 900px;
+  #alogo{
+    display: none;
+    path {
+      
+    }
+    path:nth-child(odd) {
+      stroke-dasharray: 60;
+      stroke-width: 2px;
+      stroke: rgba(33,150,243,.4);
+      //stroke-opacity:0.5;
+      animation: dash 5s infinite linear;
+    }
+
+    path:nth-child(even) {
+      stroke-dasharray: 60;
+      stroke-width: 2px;
+      stroke: rgba(0,0,0,.2);
+      //stroke-opacity:0.5;
+      animation: dash 5s infinite linear;
+    }
+
+  }
+}
+
+footer{
+  background: #202124;
+  color: #999aa1;
+}
+
+@keyframes dash {
+  0% {
+        stroke-dashoffset: 0;
+    }
+  50% {
+      stroke-dashoffset: 800;
+  }
+  100% {
+      stroke-dashoffset: 0;
+  }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+} 
+
+/*
+.w3-content{
+  //position: relative;
+.main-logo, .main-control{
+      //position: absolute;
+      padding: 20px;
+      top: 0;
+    }
+    .main-logo{
+      left: 0;
+    }
+    .main-control{
+      right: 0;
+    }
+  }
+  */
+
+/*
+.navbar{  
+  .container{
+    position: relative;
+    .navbar-collapse {
+      text-align: center;
+      .navbar-nav {
+        display: inline-block;
+        float: none;
+        vertical-align: top;
+      }
+    }
+  }
+  .navbar-side{
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 1000px;
+    background: black;
+    opacity: .8;
+    pointer-events: none;
+  }
+} 
+*/
+
+
+
+/* ---- grid ---- */
+.grid {
+  background: #EEE;
+  max-width: 1200px;
+}
+
+/* clearfix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- grid-item ---- */
+
+.grid-sizer,
+.grid-item {
+  width: 50%;
+  padding-bottom: 50%;
+}
+
+.grid-item {
+  height: 120px;
+  float: left;
+  background: #D26;
+  border: 0px solid #333;
+  border-color: hsla(0, 0%, 0%, 0.5);
+  border-radius: 5px;
+}
+
+.grid-item--width2 { width:  40%; }
+.grid-item--width3 { width:  60%; }
+
+.grid-item--height2 { height: 200px; }
+.grid-item--height3 { height: 260px; }
+.grid-item--height4 { height: 360px; }
+
+@media only screen and (min-width : 768px) {
+  .grid-sizer,
+  .grid-item {
+      width: 33.33%;
+      padding-bottom: 33.33%;
+    }
+}
+
+@media only screen and (min-width : 992px) {
+  .grid-sizer,
+  .grid-item {
+      width: 25%;
+      padding-bottom: 25%;
+    }
+}
+
+@media only screen and (min-width : 1200px) {
+  .grid-sizer,
+  .grid-item {
+      width: 20%;
+      padding-bottom: 20%;
+    }
+}
+
+.img-placeholder {
+  background-color: #f6f6f6;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+  
+  width: 100%;
+  padding-bottom: 100%;  
+  display: inline-block;  
+}
+
+.img-placeholder img {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.img-placeholder img.large-loaded {
+	transition: opacity 1s linear;
+    opacity: 1;
+}
+
+.img-placeholder img.small-loaded {
+    opacity: 1;
+}
+
+.img-small {
+  filter: blur(50px);
+  /* this is needed so Safari keeps sharp edges */
+  transform: scale(1);
+}
+
+
