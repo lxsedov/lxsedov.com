@@ -1,0 +1,167 @@
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin vertical-align($position: relative) {
+  position: $position;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+$main-color: red;
+
+$s2-background: gray;
+
+/*
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+*/
+
+body{
+    font-family: 'Roboto', sans-serif;
+    canvas{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+    .s0{
+        width: 100%;
+        height: 85vh;
+        min-height: 500px;
+        .s0-content{
+            width: 30%;
+            min-width: 300px;
+            text-align: center;
+            margin: auto;
+            color: red;
+            @include vertical-align();
+            h1{
+                color: blue;
+                text-transform: uppercase;
+            }
+            p{
+                color: black;
+            }
+            img{
+                border-radius: 50%;
+                width: 150px;
+                height: auto;
+                margin: 20px;
+            }
+            .social{
+                i{
+                    color: gray;
+                    @include transition(color .3s ease);
+                    &:hover{
+                      color: black;
+
+                    }
+                }
+            }
+        }
+    }
+    .s2{
+        padding: 20px;
+        min-height: 100vh;
+        background: $s2-background;
+    }
+}
+
+/* ++ mouse scroll button*/
+.btn-scroll{
+    display: inline-block;
+    width: 100%;
+    .mouse{
+        position: relative;
+      	display: block;
+      	width: 30px;
+      	height: 50px;
+      	margin: 0 auto 20px;
+      	-webkit-box-sizing: border-box;
+      	-moz-box-sizing: border-box;
+      	box-sizing: border-box;
+      	border: 2px solid white;
+      	border-radius: 23px;
+        opacity: .5;
+        @include transition(opacity .6s ease);
+        .mouse-scroll{
+            position: absolute;
+            display: block;
+            top: 29%;
+            left: 50%;
+            width: 6px;
+            height: 6px;
+            margin: -3px 0 0 -3px;
+            background: white;
+            border-radius: 50%;
+        }
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+.animation-scroll-down{
+    -webkit-animation: mouse-down 2.5s linear infinite;
+    -moz-animation: mouse-down 2.5s linear infinite;
+    animation: mouse-down 2.5s linear infinite;
+}
+
+.animation-scroll-up{
+    -webkit-animation: mouse-up 2.5s linear infinite;
+    -moz-animation: mouse-up 2.5s linear infinite;
+    animation: mouse-up 2.5s linear infinite;
+}
+
+@keyframes mouse-down {
+  	0% {
+      	opacity: 1;
+      	top: 25%;
+  	}
+  	15% {
+      	opacity: 1;
+      	top: 50%;
+  	}
+  	50% {
+      	opacity: 0;
+      	top: 50%;
+  	}
+  	100% {
+      	opacity: 0;
+      	top: 25%;
+  	}
+}
+
+@keyframes mouse-up {
+    0% {
+        opacity: 1;
+        top: 50%;
+    }
+    15% {
+        opacity: 1;
+        top: 25%;
+    }
+    50% {
+        opacity: 0;
+        top: 25%;
+    }
+    100% {
+        opacity: 0;
+        top: 50%;
+    }
+}
+/* -- mouse scroll button*/
